@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="project_otchislenie.MainPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions> 
+        <Label  Text="Заявление на отчисление" Grid.ColumnSpan="3" HorizontalTextAlignment="Center" FontSize="25"/>
+        <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Text="Список студентов" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OpenListStudent"/>
+
+    </Grid>
+   
+</ContentPage>
