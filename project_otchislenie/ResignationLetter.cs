@@ -9,7 +9,9 @@ namespace project_otchislenie
     public class ResignationLetter
     {
         public int Id {  get; set; }
-        public string Type { get; set; }
+        public List<Type> Types { get; set; }
         public string Date { get; set; }
+        public int Debts { get; set; }
+
     }
 }

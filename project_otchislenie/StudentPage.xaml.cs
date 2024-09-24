@@ -7,6 +7,8 @@ public partial class StudentPage : ContentPage
     private StudentDB selectedStudent;
     public event PropertyChangedEventHandler? PropertyChanged;
 
+    public Student Student { get; set; }
+
     public List<StudentDB> students { get; set; }
     public StudentDB SelectedStudent
     {
@@ -23,17 +25,17 @@ public partial class StudentPage : ContentPage
 		InitializeComponent();
 	}
 
-    private void AddStudent(object sender, EventArgs e)
+    private async void AddStudent(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new AddStudentPage());
     }
 
-    private void EditStudent(object sender, EventArgs e)
+    private async void EditStudent(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new EditStudentPage());
     }
 
-    private void DeleteStudent(object sender, EventArgs e)
+    private async void DeleteStudent(object sender, EventArgs e)
     {
 
     }

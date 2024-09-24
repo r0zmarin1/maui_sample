@@ -18,7 +18,7 @@
         <Label  Text="Студенты" Grid.ColumnSpan="3" HorizontalTextAlignment="Center"/>
 
         <ListView Grid.Row="1" Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="3" ItemsSource="{Binding Student}" SelectedItem="{Binding SelectedStudent}" >
-            <ListView.ItemTemplate>
+            <!--<ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <ViewCell.ContextActions>
@@ -29,9 +29,9 @@
                         </ViewCell.ContextActions>
                     </ViewCell>
                 </DataTemplate>
-            </ListView.ItemTemplate>
+            </ListView.ItemTemplate>-->
         </ListView>
-
+        <Button Text="Добавить" Clicked="AddStudent"/>
     </Grid>
 
 </ContentPage>

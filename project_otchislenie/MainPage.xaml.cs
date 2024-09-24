@@ -24,9 +24,9 @@ namespace project_otchislenie
             InitializeComponent();
         }
 
-        private void OpenListStudent(object sender, EventArgs e)
+        private async void OpenListStudent(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new StudentPage());
         }
     }
 
