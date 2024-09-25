@@ -10,9 +10,7 @@
         <Entry Text="{Binding Student.LastName}"/>
         <Label Text="Возраст"/>
         <Slider Minimum="15" Maximum="99" Value="{Binding Student.Age}" />
-        <sf:SfSlider>
-            
-        </sf:SfSlider>
         <Label Text="{Binding Student.Age}"/>
+        <Button Text="Сохранить" Clicked="Save"/>
     </VerticalStackLayout>
 </ContentPage>
