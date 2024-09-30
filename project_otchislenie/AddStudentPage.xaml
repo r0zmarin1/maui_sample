@@ -11,6 +11,6 @@
         <Label Text="Возраст"/>
         <Slider Minimum="15" Maximum="99" Value="{Binding Student.Age}" />
         <Label Text="{Binding Student.Age}"/>
-        <Button Text="Сохранить" Clicked="Save"/>
+        <Button Text="Сохранить" Clicked="SaveStudent"/>
     </VerticalStackLayout>
 </ContentPage>

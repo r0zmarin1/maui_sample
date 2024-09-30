@@ -5,22 +5,11 @@ namespace project_otchislenie
 {
     public partial class MainPage : ContentPage, INotifyPropertyChanged
     {
-        private Student selectedStudents;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
         public List<Student> Students { get; set; }
 
-        public Student SelectedStudents
-        {
-            get => selectedStudents;
-            set
-            {
-                selectedStudents = value;
-                PropertyChanged?.Invoke(this,
-                    new PropertyChangedEventArgs(nameof(SelectedStudents)));
-            }
-        }
         private DB DB;
 
         public MainPage()
@@ -37,7 +26,7 @@ namespace project_otchislenie
 
         private async void OpenListStudent(object sender, EventArgs e)
         {
-             await DB.GetListStudent();
+            await DB.GetListStudent();
             await Navigation.PushAsync(new StudentPage());
         }
     }

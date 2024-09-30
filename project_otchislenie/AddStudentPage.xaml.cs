@@ -5,32 +5,20 @@ namespace project_otchislenie;
 
 public partial class AddStudentPage : ContentPage
 {
-    private Student Students;
+    public Student Student { get; set; }
+
     private DB DB;
 
-    //public event PropertyChangedEventHandler? PropertyChanged;
 
-    //public Student SelectedStudents
-    //{
-    //    get => selectedStudents;
-    //    set
-    //    {
-    //        selectedStudents = value;
-    //        //PropertyChanged?.Invoke(this,
-    //        //    new PropertyChangedEventArgs(nameof(SelectedStudents)));
-    //    }
-    //}
     public AddStudentPage()
 	{
 		InitializeComponent();
         BindingContext = this;
     }
 
-    public async Task Save(Student student)
+    private async void SaveStudent(object sender, EventArgs e)
     {
-       await Task.Delay(1000);
-       DB.AddStudent(student);
-        //PropertyChanged?.Invoke(this,
-        //        new PropertyChangedEventArgs(nameof(SelectedStudents)));
+        //await Task.Delay(1000);
+        await DB.AddStudent(Student);
     }
 }

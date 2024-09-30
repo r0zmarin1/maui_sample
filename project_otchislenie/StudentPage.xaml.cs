@@ -4,27 +4,20 @@ namespace project_otchislenie;
 
 public partial class StudentPage : ContentPage
 {
-    private Student selectedStudents;
-    public event PropertyChangedEventHandler? PropertyChanged;
-
     public List<Student> Students { get; set; }
-
-    public Student SelectedStudents
-    {
-        get => selectedStudents;
-        set
-        {
-            selectedStudents = value;
-            PropertyChanged?.Invoke(this,
-                new PropertyChangedEventArgs(nameof(SelectedStudents)));
-        }
-    }
+    private DB DB;
 
     public StudentPage()
 	{
-		InitializeComponent();
+        InitializeComponent();
+        Students = new List<Student>();
+        Students.Add(new Student
+        {
+            FirstName = "Мария",
+            LastName = "Розина",
+            Age = 18
+        });
         BindingContext = this;
-        //SelectedStudents = selectedStudents;
 	}
 
     private async void AddStudent(object sender, EventArgs e)
