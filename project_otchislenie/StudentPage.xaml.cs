@@ -10,15 +10,15 @@ public partial class StudentPage : ContentPage
     public StudentPage()
 	{
         InitializeComponent();
-        Students = new List<Student>();
-        Students.Add(new Student
-        {
-            FirstName = "Мария",
-            LastName = "Розина",
-            Age = 18
-        });
+        DB = new DB();
+        GetData();
         BindingContext = this;
 	}
+
+    private async void GetData()
+    {
+        Students = await DB.GetListStudent();
+    }
 
     private async void AddStudent(object sender, EventArgs e)
     {

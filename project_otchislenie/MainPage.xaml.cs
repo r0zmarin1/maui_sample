@@ -26,7 +26,6 @@ namespace project_otchislenie
 
         private async void OpenListStudent(object sender, EventArgs e)
         {
-            await DB.GetListStudent();
             await Navigation.PushAsync(new StudentPage());
         }
     }
