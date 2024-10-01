@@ -2,22 +2,37 @@ using System.ComponentModel;
 
 namespace project_otchislenie;
 
-public partial class StudentPage : ContentPage
+public partial class StudentPage : ContentPage, INotifyPropertyChanged
 {
     public List<Student> Students { get; set; }
     private DB DB;
+    bool loaded = false;
+
+    public event PropertyChangedEventHandler? PropertyChanged;
 
     public StudentPage()
 	{
         InitializeComponent();
         DB = new DB();
         GetData();
-        BindingContext = this;
+        BindingContext = this; 
+        
 	}
+
+    protected override void OnAppearing()
+    {
+        if (loaded == false)
+        {
+            GetData();
+            loaded = true;
+        }
+        
+    }
 
     private async void GetData()
     {
         Students = await DB.GetListStudent();
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Students)));
     }
 
     private async void AddStudent(object sender, EventArgs e)

@@ -12,8 +12,9 @@ namespace project_otchislenie
 {
     public class DB
     {
-        private List<ResignationLetter> ResignationLetter {  get; set; }
-        private List<Student> Students { get; set; }
+        public List<ResignationLetter> ResignationLetter {  get; set; }
+        public List<Student> Students { get; set; }
+        public Student Student { get; set; }
 
         private int LastStudentId;
         private int LastResignationLetterId;
@@ -90,21 +91,22 @@ namespace project_otchislenie
                 Debts = letter.Debts,
                 
             };
-            ResignationLetter.Add(resignationLetter);
+            ResignationLetter.Add(newResignationLetter);
         }
 
         public async Task AddStudent(Student student)
         {        
             await Task.Delay(100);
-            var new_student = Students.FirstOrDefault(s => s.Id == LastStudentId);
             Student getStudent = new Student()
             {
                 Id = LastStudentId++,
-                FirstName = new_student.FirstName,
-                LastName = new_student.LastName,
-                Age = new_student.Age
+                FirstName = student.FirstName,
+                LastName = student.LastName,
+                Age = student.Age
             };
-            Students.Add(new_student);
+            Students.Add(getStudent);
+            
+            
         }
 
         public async Task EditResignationLetter(ResignationLetter resignationLetter, int id) 

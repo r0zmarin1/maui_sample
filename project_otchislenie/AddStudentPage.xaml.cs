@@ -13,12 +13,21 @@ public partial class AddStudentPage : ContentPage
     public AddStudentPage()
 	{
 		InitializeComponent();
+        DB = new DB();
+        Student = new Student();
         BindingContext = this;
+        
+        //.ValueChanged += AgeChanged;
     }
 
     private async void SaveStudent(object sender, EventArgs e)
     {
-        //await Task.Delay(1000);
         await DB.AddStudent(Student);
+        OnPropertyChanged(nameof(Student));
+    }
+
+    private void AgeChanged(object sender, ValueChangedEventArgs e)
+    {
+        OnPropertyChanged(nameof(Student));
     }
 }

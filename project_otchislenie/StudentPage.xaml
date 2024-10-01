@@ -16,7 +16,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Label  Text="Студенты" Grid.ColumnSpan="3" HorizontalTextAlignment="Center"/>
-        <ListView Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3" ItemsSource="{Binding Students}" SelectedItem="{Binding Student}" >
+        <ListView Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" ItemsSource="{Binding Students}" SelectedItem="{Binding Student}" VerticalScrollBarVisibility="Always" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -29,9 +29,9 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Grid.Row="2"  Grid.Column="2" Text="Добавить" Clicked="AddStudent"/>
-        <Button Text="Изменить" Grid.Row="2" Grid.Column="1" Clicked="EditStudent"/>
-        <Button Text="Удалить" Grid.Row="2" Clicked="DeleteStudent"/>
+        <Button Grid.Row="3"  Grid.Column="2" Text="Добавить" Clicked="AddStudent"/>
+        <Button Text="Изменить" Grid.Row="3" Grid.Column="1" Clicked="EditStudent"/>
+        <Button Text="Удалить" Grid.Row="3" Clicked="DeleteStudent"/>
     </Grid>
 
 </ContentPage>
