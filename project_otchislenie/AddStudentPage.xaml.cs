@@ -7,23 +7,23 @@ public partial class AddStudentPage : ContentPage
 {
     public Student Student { get; set; }
 
-    private DB DB;
+    private DB DB = new();
 
 
-    public AddStudentPage()
+    public AddStudentPage(DB dB)
 	{
 		InitializeComponent();
-        DB = new DB();
+        DB = dB;
         Student = new Student();
         BindingContext = this;
-        
-        //.ValueChanged += AgeChanged;
     }
 
     private async void SaveStudent(object sender, EventArgs e)
     {
         await DB.AddStudent(Student);
         OnPropertyChanged(nameof(Student));
+        await Navigation.PopAsync();
+
     }
 
     private void AgeChanged(object sender, ValueChangedEventArgs e)

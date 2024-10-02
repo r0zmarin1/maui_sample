@@ -1,6 +1,8 @@
 ﻿namespace project_otchislenie
 {
-    public class Reasons
+    public class Reason
     {
+        public int Id {  get; set; }
+        public string Title { get; set; }
     }
 }

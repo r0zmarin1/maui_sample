@@ -16,14 +16,14 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Label  Text="Студенты" Grid.ColumnSpan="3" HorizontalTextAlignment="Center"/>
-        <ListView Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" ItemsSource="{Binding Students}" SelectedItem="{Binding Student}" VerticalScrollBarVisibility="Always" >
-            <ListView.ItemTemplate>
+        <ListView HeightRequest="80" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" ItemsSource="{Binding Students}" SelectedItem="{Binding Student}" VerticalScrollBarVisibility="Always" >
+            <ListView.ItemTemplate >
                 <DataTemplate>
-                    <ViewCell>
+                    <ViewCell >
                         <StackLayout>
-                            <Label Text="{Binding FirstName}"/>
-                            <Label Text="{Binding LastName}"/>
-                            <Label Text="{Binding Age}"/>
+                            <Label Grid.Row="1" Text="{Binding FirstName}"/>
+                            <Label Grid.Row="2" Text="{Binding LastName}"/>
+                            <Label Grid.Row="3" Text="{Binding Age}"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

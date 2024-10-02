@@ -2,51 +2,46 @@ using System.ComponentModel;
 
 namespace project_otchislenie;
 
-public partial class StudentPage : ContentPage, INotifyPropertyChanged
+public partial class StudentPage : ContentPage
 {
-    public List<Student> Students { get; set; }
-    private DB DB;
+    public List<Student> Students { get; set; } = new();
+    public Student Student { get; set; }
+    private DB DB = new();
     bool loaded = false;
-
-    public event PropertyChangedEventHandler? PropertyChanged;
 
     public StudentPage()
 	{
         InitializeComponent();
-        DB = new DB();
         GetData();
-        BindingContext = this; 
-        
+        BindingContext = this;  
 	}
 
     protected override void OnAppearing()
     {
-        if (loaded == false)
-        {
             GetData();
-            loaded = true;
-        }
-        
     }
 
     private async void GetData()
     {
         Students = await DB.GetListStudent();
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Students)));
+        OnPropertyChanged(nameof(Students));
     }
 
     private async void AddStudent(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new AddStudentPage());
+        await Navigation.PushAsync(new AddStudentPage(DB));
+        GetData();
     }
 
     private async void EditStudent(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new EditStudentPage());
+        await Navigation.PushAsync(new EditStudentPage(Student, DB));
     }
 
     private async void DeleteStudent(object sender, EventArgs e)
     {
+        await DB.DeleteStudent(Student);
+        GetData();
 
     }
 }

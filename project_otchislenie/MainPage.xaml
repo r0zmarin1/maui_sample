@@ -17,6 +17,8 @@
         </Grid.ColumnDefinitions>
         <Label  Text="Заявление на отчисление" Grid.ColumnSpan="3" HorizontalTextAlignment="Center" FontSize="25"/>
         <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Text="Список студентов" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OpenListStudent"/>
-
+        <Button Text="Создать заявление" Clicked="MakeNewLetter"/>
+        <Button Text="Удалить заявление" Clicked="DeleteLetter"/>
+        <Button Text="Изменить заявление" Clicked="ChangeLetter"/>
     </Grid>
 </ContentPage>

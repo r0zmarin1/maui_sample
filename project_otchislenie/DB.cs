@@ -12,14 +12,14 @@ namespace project_otchislenie
 {
     public class DB
     {
-        public List<ResignationLetter> ResignationLetter {  get; set; }
+        public List<ResignationLetter> ResignationLetter { get; set; }
         public List<Student> Students { get; set; }
         public Student Student { get; set; }
 
         private int LastStudentId;
         private int LastResignationLetterId;
 
-        public DB() 
+        public DB()
         {
             Students = new List<Student>();
             Students.Add(new Student
@@ -66,10 +66,15 @@ namespace project_otchislenie
 
         }
 
-        public async Task GetStudentById(int id)
+        public async Task<Student> GetStudentById(int id)
         {
-            await Task.Delay(100);
+
             var student = Students.FirstOrDefault(s => s.Id == id);
+            await Task.Delay(100);
+            if (student == null)
+            {
+                return null;
+            }
             Student getStudent = new Student()
             {
                 Id = student.Id,
@@ -77,25 +82,27 @@ namespace project_otchislenie
                 LastName = student.LastName,
                 Age = student.Age
             };
+
+
+            return getStudent;
         }
 
-        public async Task AddResignationLetter(ResignationLetter resignationLetter, int id ) 
+        public async Task AddResignationLetter(ResignationLetter resignationLetter)
         {
             await Task.Delay(100);
-            var letter = ResignationLetter.FirstOrDefault(s => s.Id == id);
             ResignationLetter newResignationLetter = new ResignationLetter()
             {
                 Id = LastResignationLetterId++,
-                ReasonId = letter.ReasonId,
-                Date = letter.Date,
-                Debts = letter.Debts,
-                
+                ReasonId = resignationLetter.ReasonId,
+                Date = resignationLetter.Date,
+                Debts = resignationLetter.Debts,
+
             };
             ResignationLetter.Add(newResignationLetter);
         }
 
         public async Task AddStudent(Student student)
-        {        
+        {
             await Task.Delay(100);
             Student getStudent = new Student()
             {
@@ -105,39 +112,42 @@ namespace project_otchislenie
                 Age = student.Age
             };
             Students.Add(getStudent);
-            
-            
         }
 
-        public async Task EditResignationLetter(ResignationLetter resignationLetter, int id) 
-        { 
+        public async Task EditResignationLetter(ResignationLetter resignationLetter, int id)
+        {
             await Task.Delay(100);
             GetResignationLetterById(id);
-
-
-
         }
 
-        public async Task EditStudent(Student student, int id) 
-        { 
+        public async Task EditStudent(Student student)
+        {
             await Task.Delay(100);
-            GetStudentById(id);
+            var stu = Students.FirstOrDefault(s => s.Id == student.Id);
+            stu.Id = student.Id;
+            stu.FirstName = student.FirstName;
+            stu.LastName = student.LastName;
+            stu.Age = student.Age;
         }
 
-        public async Task DeleteResignationLetterById(ResignationLetter resignationLetter, int id) 
-        { 
+        public async Task DeleteResignationLetterById(ResignationLetter resignationLetter, int id)
+        {
             await Task.Delay(100);
             GetResignationLetterById(id);
             ResignationLetter.Remove(resignationLetter);
 
         }
 
-        public async Task DeleteStudent(Student student, int id) 
+        public async Task DeleteStudent(Student student)
         {
             await Task.Delay(100);
-            GetStudentById(id);
-            Students.Remove(student);
+            var stu = Students.FirstOrDefault(s => s.Id == student.Id);
+            if (student.Id == stu.Id)
+            {
+                Students.Remove(student);
+            }
         }
 
     }
 }
+

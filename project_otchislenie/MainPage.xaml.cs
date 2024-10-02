@@ -1,4 +1,5 @@
-﻿using System.Collections.Specialized;
+﻿using Microsoft.Maui.Controls;
+using System.Collections.Specialized;
 using System.ComponentModel;
 
 namespace project_otchislenie
@@ -15,18 +16,26 @@ namespace project_otchislenie
         public MainPage()
         {
             InitializeComponent();
-            //Students = new List<Student>();
-            //Students.Add(new Student
-            //{
-            //    FirstName = "Мария",
-            //    LastName = "Розина",
-            //    Age = 18
-            //});
         }
 
         private async void OpenListStudent(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new StudentPage());
+        }
+
+        private async void MakeNewLetter(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NewLetterPage());
+        }
+
+        private async void DeleteLetter(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void ChangeLetter(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new EditLetterPage());
         }
     }
 

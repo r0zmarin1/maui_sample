@@ -4,9 +4,15 @@
              x:Class="project_otchislenie.EditStudentPage"
              Title="EditStudentPage">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <VerticalStackLayout>
+            <Label Text="Имя"/>
+            <Entry Text="{Binding Student.FirstName}"/>
+            <Label Text="Фамилия"/>
+            <Entry Text="{Binding Student.LastName}"/>
+            <Label Text="Возраст"/>
+            <Slider x:Name="slider" Minimum="15" Maximum="99" Value="{Binding Student.Age}" ValueChanged="AgeChanged" />
+            <Label Text="{Binding Student.Age}"/>
+            <Button Text="Сохранить" Clicked="SaveStudent"/>
+        </VerticalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
