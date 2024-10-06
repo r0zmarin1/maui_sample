@@ -10,8 +10,7 @@ namespace project_otchislenie
     {
         public int Id {  get; set; }
         public int ReasonId { get; set; }
-        public DateTime Date { get; set; }
-        public int Debts { get; set; }
+        public DateTime Date { get; set; } = DateTime.Today;
         public int StudentId { get; set; }
     }
 }

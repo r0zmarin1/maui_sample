@@ -4,10 +4,9 @@ using System.ComponentModel;
 
 namespace project_otchislenie
 {
-    public partial class MainPage : ContentPage, INotifyPropertyChanged
+    public partial class MainPage : ContentPage
     {
 
-        public event PropertyChangedEventHandler? PropertyChanged;
 
         public List<Student> Students { get; set; }
 
@@ -25,7 +24,7 @@ namespace project_otchislenie
 
         private async void MakeNewLetter(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new NewLetterPage());
+            await Navigation.PushAsync(new AddLetterPage());
         }
 
         private async void DeleteLetter(object sender, EventArgs e)

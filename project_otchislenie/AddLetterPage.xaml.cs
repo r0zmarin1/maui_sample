@@ -1,8 +1,8 @@
 namespace project_otchislenie;
 
-public partial class EditLetterPage : ContentPage
+public partial class AddLetterPage : ContentPage
 {
-	public EditLetterPage()
+	public AddLetterPage()
 	{
 		InitializeComponent();
 	}
